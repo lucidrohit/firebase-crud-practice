@@ -14,6 +14,7 @@ function Home() {
       <li key={id}>
         <h1>{name[0].toUpperCase() + name.slice(1)}</h1>
         <p>{email}</p>
+        <p>{id}</p>
       </li>
     ))}
   </ul>
@@ -21,12 +22,12 @@ function Home() {
   useEffect(() => {
     const getUsersList = async () => {
       const usersList = await getUsers()
-      setContent(ListUser(usersList))
       setUsers(usersList)
+      setContent(ListUser(users))
     }
     getUsersList()
 
-  }, [])
+  }, [users])
 
 
   return (
